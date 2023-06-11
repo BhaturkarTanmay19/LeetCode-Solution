@@ -1,0 +1,35 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        Arrays.sort(nums);
+        if(nums.length == 1)
+        {
+            return nums[0];
+        }
+        List<Integer> list = new ArrayList<Integer>();
+        for(int i=0; i<nums.length; i++)
+        {
+            list.add(nums[i]);
+            
+        }
+         
+        Set<Integer> set = new HashSet<Integer>();//2,2,1,1,1,2,2
+        set.addAll(list);
+        int diff = 0;
+        int result = 0;
+        int majele = 0;
+        
+        for(int element: set)
+        {
+            if(list.indexOf(element) != list.lastIndexOf(element))
+            {
+                result = list.lastIndexOf(element) - list.indexOf(element);
+                if(diff < result)
+                {
+                    diff = result;
+                    majele = element;
+                }
+            }
+        }
+        return majele;
+    }
+}
