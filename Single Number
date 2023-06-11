@@ -1,0 +1,27 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        Arrays.sort(nums);
+        Set<Integer> set = new HashSet<Integer>();
+       for(int i=0; i<nums.length; i++)
+       {
+           set.add(nums[i]);
+       }
+        List<Integer> List = new ArrayList<Integer>();
+      for(int i=0; i<nums.length; i++)
+      {
+        List.add(nums[i]);
+      }
+    
+      List<Integer> List1 = new ArrayList<Integer>();
+      List1.addAll(set);
+      
+        for(int element : List1)
+    {
+        if(List.indexOf(element) == List.lastIndexOf(element))
+        {
+            return element;
+        }
+    }
+        return 0;
+    }
+}
